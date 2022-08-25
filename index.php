@@ -16,20 +16,25 @@ if(isset($_POST['submit'])){
 	$about=$_POST['subject'];
 	$message=$_POST['message'];
 
-	if(empty($name) && empty($email) && empty($message)){
-		$mess= "Your fields can not be empty";
+	if(!empty($name) && !empty($email) && !empty($message)){
 
+
+
+		$query="INSERT INTO user_message(name,email,About,message)";
+		$query.="VALUES('{$name}','{$email}','{$about}','{$message}')";
+		$result=mysqli_query($conn,$query);
+	
+	
+		$mess="message submitted sucessfully!";
+	
+
+		
 		
 	}
 
 	else{
 	
-		$query="INSERT INTO user_message(name,email,About,message)";
-	$query.="VALUES('{$name}','{$email}','{$about}','{$message}')";
-	$result=mysqli_query($conn,$query);
-
-
-	$mess="message submitted sucessfully!";
+		$mess= "Your fields can not be empty";
 
 	}
 
@@ -104,9 +109,10 @@ if(isset($_POST['submit'])){
 							<div class="col-lg-8">
 								<div class="contact-wrap">
 									<h3 class="mb-4 text-center">Get in touch with us</h3>
-									<div id="form-message-warning" class="mb-4 w-100 text-center"></div> 
-				      		<div id="form-message-success" class="mb-4 w-100 text-center"><h3 class="mb-4 text-center"><?php echo $mess ?></h3>
+									<div class="text-center bg-danger"><h3><?php echo $mess ?></h3></div>
 				           
+									<div id="form-message-warning" class="mb-4 w-100 text-center"></div> 
+				      		<div id="form-message-success" class="mb-4 w-100 text-center"><h3 class="mb-4 text-center">
 				      		</div>
 									<form method="POST" id="contactForm" name="contactForm" class="contactForm">
 										<div class="row">
