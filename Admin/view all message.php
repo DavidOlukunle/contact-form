@@ -16,7 +16,7 @@ $conn=mysqli_connect('localhost','David','password','contactForm');
 		<div class="mt-5 text-center text-primary  ">All messages</div>
 
 <div class="container pt-5">
-	<table class="table table-condensed table-hover table-bordered">
+	<table class="table table-condensed table-dark table-hover table-bordered">
 		<tbody>
 		<tr>
 		<th>Name</th>
